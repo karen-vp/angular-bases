@@ -1,0 +1,32 @@
+<p>Listado de Héroes</p>
+
+<!--El ngIf puede recibir cualquier valor Truthy o Falsy, evidentemente si es un valo Truthy se cumple y Falsy no se cumple,
+
+ngIf-else es como un if else, si no se cumple la condicion realizara la accion que indiquemos en la sentencia else, en este caso estamos creando una referencia llamada nothingWasDeleted, la cual se refiere al ng-template que tiene esa referencia local con #
+
+Si no se cumple la condición mostrara el contenido de ese ng-template al cual estamos haciendo referencia con el nombre <nothingWasDeleted>-->
+<div *ngIf="deletedHeroe; else nothingWasDeleted">
+  <h3>Héroe borrado <small class="text-danger">{{deletedHeroe}}</small></h3>
+</div>
+
+<!-- El ng-template es como un div pero que no se renderiza en el DOM, este solo muestra su contenido y no la etiqueta ng-template en si, esto es porque no es un elemento HTML, el ng-template espera el momento en que le vas a indicar para renderizarse en el DOM.
+
+  #nothingWasDeleted es una referencia local.
+-->
+<ng-template #nothingWasDeleted>
+  <h3>No ha borrado nada</h3>
+</ng-template>
+
+<button
+  *ngIf="heroNames.length > 0"
+(click)="removeLastHeroe()"
+class="btn btn-outline-danger">
+  Borrar último héroe
+</button>
+
+<ul class="mt-2 list-group">
+  <li
+  *ngFor="let name of heroNames"
+  class="list-group-item">{{name}}</li>
+
+</ul>
