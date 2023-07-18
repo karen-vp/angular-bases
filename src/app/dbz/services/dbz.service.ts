@@ -21,6 +21,7 @@ import { v4 as uuid } from 'uuid';
 @Injectable({ providedIn: 'root' })
 export class DbzService {
 
+  // Properties
   public characters: Character[] = [
     {
       id: uuid(),
@@ -39,20 +40,14 @@ export class DbzService {
     }
   ];
 
-  addCaracter(character: Character): void {
-    // const newCharacter: Character = {
-    //   id: uuid(),
-    //   name: character.name,
-    //   power: character.power
-    // }
+  //Methods
 
-    // Refactorizacion del codigo de newCharacter
+  addCaracter(character: Character): void {
+
     const newCharacter: Character = {
       id: uuid(),
       ...character // con el operador spread (...) le digo que tome todas las propiedades del objeto 'character' y esparcelas en este nuevo objeto 'newCharacter'
     }
-
-
     this.characters.push(newCharacter);
   }
 
