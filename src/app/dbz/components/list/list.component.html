@@ -1,0 +1,34 @@
+<h4>Listado</h4>
+<ul class="list-group">
+<!-- Al trabajar con *ngFor si queremos el indice de los elementos, debemos extraerlo de la siguiente manera dentro del *ngFor =" let i= index"
+
+  Otra cosa que tiene *ngFor es que tiene variables para varias cosas y aquí vemos algunas:
+  first - primer elemento
+  last - ultimo elemento
+  even - elemento es par
+  odd - elemento es impar
+-->
+  <li *ngFor="
+  let character of characterList;
+  let i = index;
+  let isFirst = first;
+  let isLast = last;
+  let isEven = even;
+  let isOdd = odd;"
+
+  class="list-group-item d-flex justify-content-between align-items-center"
+   [ngClass]="{'list-group-item-dark':isLast,
+   'list-group-item-primary' : isEven}">
+
+   <div>
+     <!-- Le sumamos 1 al indice para que no empiece desde 0 -->
+     <span class="text-primary">{{i + 1}}.</span>
+     <span>{{character.name}} </span>
+     <strong>Power: </strong>
+     <span>{{character.power}}</span>
+   </div>
+
+    <button class="btn btn-danger" (click)="onDeleteCharacter(character.id)">X</button>
+  </li>
+
+</ul>

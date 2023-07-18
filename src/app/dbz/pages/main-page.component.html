@@ -1,0 +1,29 @@
+<h1>DBZ Personajes</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <!-- onDelete -->
+    <!-- Especificamos la propiedad characterList y le mandamos en su valor el arreglo (characters) que especificamos en el main-page.component.ts -->
+    <dbz-list [characterList]="characters"
+    (onDelete)="onDeleteCharacter($event)"></dbz-list>
+  </div>
+
+  <div class="col">
+    <!-- add character-->
+    <!--
+      Aquí queremos escuchar el evento del componente hijo el cual emite un nuevo personaje al componente padre (actual).
+
+      En el componente padre main-page.component.ts creamos un método con el mismo nombre que nuestro emisor del componente hijo dbz-add-character, el cuál recibe un objeto de tipo Character, y la manera en la que recibe ese argumento va a ser con $event, expliquemos este codigo por partes:
+
+      (onNewCharacter) es una sintaxis utilizada para suscribirse a un evento emitido por el componente <dbz-add-character>.
+
+      "onNewCharacter($event)" es la expresión o función que se ejecutará en el componente padre cuando se emita el evento onNewCharacter.
+
+      $event es una variable especial que contiene los datos asociados al evento emitido.
+
+      En resumen, en el ejemplo proporcionado, se está utilizando el componente personalizado <dbz-add-character>, y se está suscribiendo al evento onNewCharacter que este componente emite. Cuando se emita dicho evento, se invocará la función onNewCharacter() en el componente padre, pasándole los datos asociados al evento a través de la variable $event.
+    -->
+    <dbz-add-character (onNewCharacter)="onNewCharacter($event)"></dbz-add-character>
+  </div>
+</div>
